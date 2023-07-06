@@ -3,28 +3,25 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: [
-    "eslint:recommended",
-    "prettier",
-    "prettier/react",
-    "plugin:react/recommended",
-  ],
+  extends: ['eslint:recommended', 'prettier', 'prettier/react', 'plugin:react/recommended'],
   overrides: [
     {
       env: {
         node: true,
-        "react-native/react-native": true,
+        'react-native/react-native': true,
       },
-      files: [".eslintrc.{js,cjs}"],
+      files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
-        sourceType: "script",
+        sourceType: 'script',
       },
     },
   ],
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
-  plugins: ["react", "react-native"],
-  rules: {},
+  plugins: ['react', 'react-native'],
+  rules: {
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+  },
 };

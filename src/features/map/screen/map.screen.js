@@ -12,7 +12,6 @@ const Map = styled(MapView)`
 `;
 
 const MapScreen = ({ navigation }) => {
-  console.log(navigation);
   const { location } = useContext(LocationContext);
   const { restaurants = [] } = useContext(RestaurantsContext);
   const { lat, lng, viewport } = location;

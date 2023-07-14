@@ -1,7 +1,6 @@
 import React, { useState, createContext } from 'react';
 
-import { loginRequest, registerRequest } from './auth.service';
-import { getAuth, signOut } from 'firebase/auth';
+import { loginRequest, registerRequest, logOutRequest } from './auth.service';
 
 export const AuthenticationContext = createContext();
 
@@ -12,8 +11,7 @@ export const AuthenticationContextProvider = ({ children }) => {
 
   const onLogOut = async () => {
     setUser(null);
-    const auth = getAuth();
-    await signOut(auth);
+    await logOutRequest();
   };
 
   const onLogin = async (email, password) => {

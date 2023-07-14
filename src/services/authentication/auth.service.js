@@ -9,3 +9,8 @@ export const registerRequest = async (email, password) => {
   const auth = getAuth();
   return await createUserWithEmailAndPassword(auth, email, password);
 };
+
+export const logOutRequest = async () => {
+  const auth = getAuth();
+  await signOut(auth);
+};

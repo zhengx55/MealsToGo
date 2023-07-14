@@ -15,7 +15,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       const user = await loginRequest(email, password);
       setUser(user.user);
     } catch (error) {
-      setError(e.toString());
+      setError(error.message);
     } finally {
       setIsLoading(false);
     }

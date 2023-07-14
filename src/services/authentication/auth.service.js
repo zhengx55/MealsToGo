@@ -1,7 +1,6 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
-export const loginRequest = (email, password) => {
+export const loginRequest = async (email, password) => {
   const auth = getAuth();
-  signInWithEmailAndPassword(auth, email, password);
+  return await signInWithEmailAndPassword(auth, email, password);
 };
-  

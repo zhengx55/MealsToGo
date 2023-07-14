@@ -9,22 +9,22 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
-  const onLogin = (email, password) => {
+  const onLogin = async (email, password) => {
     setIsLoading(true);
-    loginRequest(email, password)
-      .then((u) => {
-        setUser(u);
-        setIsLoading(false);
-      })
-      .catch((e) => {
-        setIsLoading(false);
-        setError(e);
-      });
+    try {
+      const user = await loginRequest(email, password);
+      setUser(user.user);
+    } catch (error) {
+      setError(e.toString());
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <AuthenticationContext.Provider
       value={{
+        isAuthenticated: !!user,
         user,
         isLoading,
         error,

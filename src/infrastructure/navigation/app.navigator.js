@@ -1,12 +1,12 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Setting from '../../features/restaurants/screen/setting.screen';
 import MapScreen from '../../features/map/screen/map.screen';
 import RestaurantsNavigator from './restaurants.navigator';
 import { FavouritesContextProvider } from '../../services/favourites/favourites.context';
 import { LocationContextProvider } from '../../services/location/location.context';
 import { RestaurantsContextProvider } from '../../services/restaurants/restaurants.context';
+import { SettingsScreen } from '../../features/settings/screens/setting.screen';
 
 const Tab = createBottomTabNavigator();
 const TAB_ICON = {
@@ -31,7 +31,7 @@ const AppNavigator = () => {
           <Tab.Navigator screenOptions={screenOptions}>
             <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
             <Tab.Screen name="Map" component={MapScreen} />
-            <Tab.Screen name="Setting" component={Setting} />
+            <Tab.Screen name="Setting" component={SettingsScreen} />
           </Tab.Navigator>
         </RestaurantsContextProvider>
       </LocationContextProvider>

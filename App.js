@@ -3,10 +3,7 @@ import { ThemeProvider } from 'styled-components/native';
 import { useFonts as useOswald, Oswald_400Regular } from '@expo-google-fonts/oswald';
 import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 import { theme } from './src/infrastructure/theme';
-import { RestaurantsContextProvider } from './src/services/restaurants/restaurants.context';
-import { LocationContextProvider } from './src/services/location/location.context';
 import { Navigation } from './src/infrastructure/navigation';
-import { FavouritesContextProvider } from './src/services/favourites/favourites.context';
 import { initializeApp } from 'firebase/app';
 import { AuthenticationContextProvider } from './src/services/authentication/auth.context';
 const firebaseConfig = {
@@ -36,13 +33,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <AuthenticationContextProvider>
-        <FavouritesContextProvider>
-          <LocationContextProvider>
-            <RestaurantsContextProvider>
-              <Navigation />
-            </RestaurantsContextProvider>
-          </LocationContextProvider>
-        </FavouritesContextProvider>
+        <Navigation />
       </AuthenticationContextProvider>
     </ThemeProvider>
   );

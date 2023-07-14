@@ -11,11 +11,12 @@ import { Text } from '../../../components/typograph/text.component';
 import { Spacer } from '../../../components/spacer/spacer.component';
 import { AuthenticationContext } from '../../../services/authentication/auth.context';
 import { Title } from 'react-native-paper';
+import { ActivityIndicator } from 'react-native';
 
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { onLogin, error } = useContext(AuthenticationContext);
+  const { onLogin, error, isLoading } = useContext(AuthenticationContext);
   return (
     <AccountBackground>
       <AccountCover />
@@ -46,13 +47,13 @@ export const LoginScreen = ({ navigation }) => {
           </ErrorContainer>
         )}
         <Spacer size="large">
-          <AuthButton
-            icon="lock-open-outline"
-            mode="contained"
-            onPress={() => onLogin(email, password)}
-          >
-            Login
-          </AuthButton>
+          {!isLoading ? (
+            <AuthButton icon="email" mode="contained" onPress={() => onLogin(email, password)}>
+              Login
+            </AuthButton>
+          ) : (
+            <ActivityIndicator animating={true} />
+          )}
         </Spacer>
       </AccountContainer>
       <Spacer size="large">
